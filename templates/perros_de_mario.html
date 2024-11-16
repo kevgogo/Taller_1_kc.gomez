@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Perros de Mario</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Perros Asignados a {{ mario.nombre }}</h1>
+
+    {% if perros %}
+    <div class="card-grid">
+      {% for perro in perros %}
+      <div class="card">
+        <h2>{{ perro.nombre }}</h2>
+        <p><strong>Raza:</strong> {{ perro.raza }}</p>
+        <p><strong>Edad:</strong> {{ perro.edad }} años</p>
+        <p><strong>Peso:</strong> {{ perro.peso }} kg</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>No hay perros asignados a {{ mario.nombre }}.</p>
+    {% endif %}
+
+    <a class="btn" href="/">Volver al inicio</a>
+  </div>
+</body>
+
+</html>

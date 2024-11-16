@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Bienvenido a la Guardería Canina</h1>
+      <p class="subtitle">Gestiona los cuidadores y sus adorables perros</p>
+    </header>
+    <div style="text-align: right;">
+      <a href="/logout" class="btn" style="width: auto; display: inline-block;">Cerrar sesión</a>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h2>Buscar Perros "Lassie"</h2>
+        <p>Consulta cuántos perros llamados "Lassie" están registrados en la guardería.</p>
+        <a href="/buscar_lassie" class="btn">Buscar</a>
+      </div>
+      <div class="card">
+        <h2>Asignar Perros a Mario</h2>
+        <p>Asigna automáticamente los perros pequeños a Mario, el cuidador más experimentado.</p>
+        <a href="/asignar_perros_a_mario" class="btn">Asignar</a>
+      </div>
+      <div class="card">
+        <h2>Consultar Perros de Mario</h2>
+        <p>Revisa todos los perros asignados al cuidador Mario y sus detalles.</p>
+        <a href="/perros_de_mario" class="btn">Consultar</a>
+      </div>
+      <div class="card">
+        <h2>Consultar Información "La Favorita"</h2>
+        <p>Consultar información de la guardería "La Favorita".</p>
+        <a href="/guarderia_favorita" class="btn">Consultar</a>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

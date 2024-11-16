@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Guardería "La Favorita"</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Guardería "{{ guarderia.nombre }}"</h1>
+
+    <!-- Información general de la guardería (sin tarjeta) -->
+    <p><strong>Dirección:</strong> {{ guarderia.direccion }}</p>
+    <p><strong>Teléfono:</strong> {{ guarderia.telefono }}</p>
+
+    <h2>Cuidadores y sus perros</h2>
+
+    {% if cuidadores %}
+    <div class="cuidadores-container">
+      {% for cuidador in cuidadores %}
+      <div class="cuidador-card">
+        <div class="cuidador-info">
+          <h3>{{ cuidador.nombre }}</h3>
+          <p><strong>Teléfono:</strong> {{ cuidador.telefono }}</p>
+        </div>
+
+        {% if cuidador.perros %}
+        <div class="perros-card">
+          <h4>Perros a cargo:</h4>
+          <div class="card-grid">
+            {% for perro in cuidador.perros %}
+            <div class="card">
+              <p><strong>Nombre del perro:</strong> {{ perro.nombre }}</p>
+              <p><strong>Raza:</strong> {{ perro.raza }}</p>
+              <p><strong>Edad:</strong> {{ perro.edad }} años</p>
+              <p><strong>Peso:</strong> {{ perro.peso }} kg</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% else %}
+        <p>No hay perros asignados a este cuidador.</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>No hay cuidadores asignados a esta guardería.</p>
+    {% endif %}
+
+    <a class="btn" href="/">Volver al inicio</a>
+  </div>
+</body>
+
+</html>
