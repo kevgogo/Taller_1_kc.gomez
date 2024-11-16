@@ -20,8 +20,10 @@ class Config:
 
     @staticmethod
     def database_uri(isFirstTime=False):
+        basedir = os.path.abspath(os.path.dirname(__file__))
+        
         if Config.DB_TYPE == 'mysql':
             if isFirstTime:
                 return f"mysql+pymysql://{Config.MYSQL_USER}:{Config.MYSQL_PASSWORD}@{Config.MYSQL_HOST}:{Config.MYSQL_PORT}"
             return f"mysql+pymysql://{Config.MYSQL_USER}:{Config.MYSQL_PASSWORD}@{Config.MYSQL_HOST}:{Config.MYSQL_PORT}/{Config.MYSQL_DB}"
-        return f"sqlite:///database/{Config.SQLITE_DB}.db"
+        return f"sqlite:///{os.path.join(basedir, f"database/{Config.SQLITE_DB}.db")}"
