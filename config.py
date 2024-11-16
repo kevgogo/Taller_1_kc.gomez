@@ -21,9 +21,11 @@ class Config:
     @staticmethod
     def database_uri(isFirstTime=False):
         basedir = os.path.abspath(os.path.dirname(__file__))
-        
+        os.makedirs(os.path.join(basedir, "database"), exist_ok=True)
+        db_path = os.path.join(basedir, "database", "heladeria.db")
+
         if Config.DB_TYPE == 'mysql':
             if isFirstTime:
                 return f"mysql+pymysql://{Config.MYSQL_USER}:{Config.MYSQL_PASSWORD}@{Config.MYSQL_HOST}:{Config.MYSQL_PORT}"
             return f"mysql+pymysql://{Config.MYSQL_USER}:{Config.MYSQL_PASSWORD}@{Config.MYSQL_HOST}:{Config.MYSQL_PORT}/{Config.MYSQL_DB}"
-        return f"sqlite:///{os.path.join(basedir, f"database/{Config.SQLITE_DB}.db")}"
+        return f"sqlite:///{db_path}"
